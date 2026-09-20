@@ -84,15 +84,15 @@ export function Header({
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`text-[14px] tracking-tight transition-all whitespace-nowrap cursor-pointer relative py-1 ${
+                className={`text-[14.5px] tracking-tight transition-colors whitespace-nowrap cursor-pointer relative py-1 font-medium ${
                   isActive
-                    ? 'text-[var(--color-text-primary)] font-bold'
-                    : 'text-[#425466] dark:text-[#ADBDCC] hover:text-[var(--color-text-primary)] font-medium'
+                    ? 'text-[var(--color-text-primary)] font-semibold'
+                    : 'text-[#425466] dark:text-[#ADBDCC] hover:text-[var(--color-text-primary)]'
                 }`}
               >
                 <span>{label}</span>
                 {isActive && (
-                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2.5px] bg-[#533AFD] dark:bg-[#7A68FF] rounded-full" />
+                  <span className="absolute bottom-[-13px] left-0 right-0 h-[2px] bg-[#635BFF] dark:bg-[#7A68FF] rounded-full" />
                 )}
               </button>
             );
@@ -200,7 +200,7 @@ export function Header({
               onClick={() => onNavigate(item.id)}
               className={`text-[13.5px] transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 isActive
-                  ? 'text-[#533AFD] dark:text-[#7A68FF] font-bold'
+                  ? 'text-[#635BFF] dark:text-[#7A68FF] font-semibold'
                   : 'text-[var(--color-text-secondary)] font-medium'
               }`}
             >

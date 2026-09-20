@@ -55,11 +55,11 @@ export function StripeWaveCanvas({ className = '' }: StripeWaveCanvasProps) {
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0.5, 0.5) },
       // Stripe signature palette: Blurple, Violet, Cyan, Coral accent
-      uColor1: { value: new THREE.Color('#533AFD') }, // Stripe Blurple
-      uColor2: { value: new THREE.Color('#7A68FF') }, // Violet / Indigo
-      uColor3: { value: new THREE.Color('#00D4FF') }, // Electric Cyan
-      uColor4: { value: new THREE.Color('#FF7A59') }, // Warm Sunset Coral (crest accent)
-      uColor5: { value: new THREE.Color('#533AFD') }, // Stripe Blurple
+      uColor1: { value: new THREE.Color('#635BFF') }, // Stripe Flagship Blurple
+      uColor2: { value: new THREE.Color('#E03177') }, // Vibrant Magenta / Rose
+      uColor3: { value: new THREE.Color('#FF5E3A') }, // Warm Sunset Coral
+      uColor4: { value: new THREE.Color('#FFA03A') }, // Warm Golden Amber
+      uColor5: { value: new THREE.Color('#00D4FF') }, // Electric Cyan
     };
 
     const material = new THREE.ShaderMaterial({

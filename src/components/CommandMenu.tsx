@@ -75,15 +75,15 @@ export function CommandMenu({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg bg-[var(--color-surface)] border border-[var(--color-border)] p-4 text-[var(--color-text-primary)]">
-        <DialogHeader className="border-b border-[var(--color-border)] pb-2 mb-2">
+        <DialogHeader className="border-b border-[var(--color-border)] pb-2.5 mb-2 pr-9">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-sm font-bold flex items-center gap-2">
-              <Compass className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              <Compass className="h-4 w-4 text-[#635BFF] dark:text-[#7A68FF]" />
               Command Palette (⌘K)
             </DialogTitle>
-            <span className="text-xs text-[var(--color-text-muted)] font-mono">
-              ESC to close
-            </span>
+            <kbd className="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--color-panel-subtle)] border border-[var(--color-border)] text-[var(--color-text-secondary)] font-medium select-none">
+              ESC
+            </kbd>
           </div>
         </DialogHeader>
 

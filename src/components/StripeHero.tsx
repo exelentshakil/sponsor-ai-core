@@ -50,9 +50,9 @@ export function StripeHero({
         <StripeWaveCanvas />
       </div>
 
-      {/* Stripe Authentic Ambient Radial Glow Aura (Subtle Blurple & Electric Cyan, Zero Muddy Cast) */}
-      <div className="pointer-events-none absolute -top-24 right-0 -z-20 h-[550px] w-[550px] rounded-full bg-gradient-to-br from-[#533AFD]/15 via-[#00D4FF]/10 to-transparent blur-3xl" />
-      <div className="pointer-events-none absolute top-1/2 -left-20 -z-20 h-[380px] w-[380px] rounded-full bg-gradient-to-tr from-[#533AFD]/8 via-[#7A68FF]/6 to-transparent blur-3xl" />
+      {/* Stripe Authentic Ambient Radial Glow Aura (Subtle Coral, Blurple & Electric Cyan) */}
+      <div className="pointer-events-none absolute -top-24 right-0 -z-20 h-[550px] w-[550px] rounded-full bg-gradient-to-br from-[#FF5E3A]/12 via-[#635BFF]/15 to-[#00D4FF]/10 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/2 -left-20 -z-20 h-[380px] w-[380px] rounded-full bg-gradient-to-tr from-[#635BFF]/8 via-[#7A68FF]/6 to-transparent blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -60,19 +60,22 @@ export function StripeHero({
           {/* Left Column: Two-Tone Typography, Value Prop & Direct Action Triggers (100% High-Contrast Clean Background) */}
           <div className="lg:col-span-7 space-y-6">
             {/* Live Telemetry Eyebrow */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/95 px-3.5 py-1.5 text-xs sm:text-[13.5px] text-[var(--color-text-secondary)] shadow-2xs backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)]/80 bg-[var(--color-surface)]/90 px-3.5 py-1 text-xs sm:text-[13px] text-[var(--color-text-secondary)] shadow-2xs backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-[#00D924] animate-pulse shrink-0" />
-              <span className="font-bold text-[var(--color-text-primary)]">Rightsholder Network:</span>
+              <span className="font-semibold text-[var(--color-text-primary)]">Rightsholder Network:</span>
               <span>84 Active Sports &amp; Entertainment Properties</span>
               <ChevronRight className="h-3.5 w-3.5 text-[var(--color-text-muted)]" />
             </div>
 
             {/* Master Stripe Two-Tone Typography Headline */}
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-[-0.025em] text-[var(--color-text-primary)] leading-[1.1]">
-                AI-native platform to run your entire commercial sponsorship programme.
+              <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-semibold tracking-[-0.03em] text-[var(--color-text-primary)] leading-[1.12]">
+                AI-native platform to{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#635BFF] via-[#7A68FF] to-[#00D4FF] font-bold">
+                  run your sponsorship programme.
+                </span>
               </h1>
-              <p className="text-lg sm:text-xl lg:text-[21px] text-[#2E3C4E] dark:text-slate-200 font-normal leading-relaxed max-w-2xl">
+              <p className="text-lg sm:text-xl lg:text-[20px] text-[#425466] dark:text-slate-300 font-normal leading-relaxed max-w-2xl">
                 From auditing rights inventory and AI brand matching to automated pitch decks, contract obligation tracking, and partner ROI reporting.
               </p>
             </div>
@@ -81,19 +84,19 @@ export function StripeHero({
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Button
                 onClick={onLaunchCockpit || onExplore}
-                className="h-11 px-6 text-[15px] font-semibold bg-[#533AFD] hover:bg-[#432DE0] text-white shadow-2xs rounded-[4px] transition-all cursor-pointer"
+                className="h-11 px-6 text-[15px] font-semibold bg-[#635BFF] hover:bg-[#533AFD] text-white shadow-xs rounded-[4px] transition-all cursor-pointer flex items-center gap-1.5"
               >
                 Launch interactive cockpit
-                <ChevronRight className="h-4 w-4 ml-1" />
+                <ChevronRight className="h-4 w-4" />
               </Button>
 
               <Button
                 variant="outline"
                 onClick={onExploreSchemas || onExplore}
-                className="h-11 px-5.5 text-[15px] font-semibold border-[var(--color-border)] bg-[var(--color-surface)]/90 hover:bg-[var(--color-panel-subtle)] text-[var(--color-text-primary)] rounded-[4px] shadow-2xs cursor-pointer backdrop-blur-xs"
+                className="h-11 px-5.5 text-[15px] font-medium border-[var(--color-border)] bg-[var(--color-surface)]/90 hover:bg-[var(--color-panel-subtle)] text-[var(--color-text-primary)] rounded-[4px] shadow-2xs cursor-pointer flex items-center gap-1.5 backdrop-blur-xs"
               >
                 Explore agent architecture
-                <ChevronRight className="h-4 w-4 ml-1 text-[var(--color-text-muted)]" />
+                <ChevronRight className="h-4 w-4 text-[var(--color-text-muted)]" />
               </Button>
             </div>
 
