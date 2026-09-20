@@ -94,7 +94,7 @@ export function CommercialWorkspaceConsole() {
           <div className="p-5 sm:p-6 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--color-border)]">
               <div>
-                <Badge variant="outline" className="bg-[#533AFD]/8 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border-[#533AFD]/20 text-[10px] font-mono mb-1">
+                <Badge variant="outline" className="bg-[#533AFD]/8 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border-[#533AFD]/20 text-xs font-semibold mb-1">
                   In-House Commercial Workspace
                 </Badge>
                 <h3 className="text-lg font-bold text-[var(--color-text-primary)]">
@@ -118,18 +118,18 @@ export function CommercialWorkspaceConsole() {
                 <div className="space-y-2 text-xs font-mono">
                   <div className="p-2 rounded bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-between">
                     <span className="text-[var(--color-text-primary)] font-sans truncate">Wembley_Bowl_LED_Specs.dwg</span>
-                    <span className="text-[10px] text-[#057A55]">Parsed</span>
+                    <span className="text-xs font-semibold text-[#057A55]">Parsed</span>
                   </div>
                   <div className="p-2 rounded bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-between">
                     <span className="text-[var(--color-text-primary)] font-sans truncate">Tier1_Rate_Card_2026.pdf</span>
-                    <span className="text-[10px] text-[#057A55]">Indexed</span>
+                    <span className="text-xs font-semibold text-[#057A55]">Indexed</span>
                   </div>
                   <div className="p-2 rounded bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-between">
                     <span className="text-[var(--color-text-primary)] font-sans truncate">Existing_Partners_Exclusivity.json</span>
-                    <span className="text-[10px] text-[#057A55]">Verified</span>
+                    <span className="text-xs font-semibold text-[#057A55]">Verified</span>
                   </div>
                 </div>
-                <p className="text-[11px] text-[var(--color-text-secondary)] leading-tight">
+                <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed font-medium">
                   Everything downstream reasons directly from these central audited documents.
                 </p>
               </div>
@@ -158,11 +158,11 @@ export function CommercialWorkspaceConsole() {
                       }`}
                     >
                       <span>{s.label}</span>
-                      <span className="text-[10px] font-mono opacity-85">{s.count}</span>
+                      <span className="text-xs font-bold text-[#533AFD]">{s.count}</span>
                     </button>
                   ))}
                 </div>
-                <p className="text-[11px] text-[var(--color-text-secondary)] leading-tight">
+                <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed font-medium">
                   Click any stage to filter active negotiations and follow-ups.
                 </p>
               </div>
@@ -180,7 +180,7 @@ export function CommercialWorkspaceConsole() {
                         <FileText className="w-3.5 h-3.5 text-[#533AFD]" />
                         Cloudflare Bespoke Pitch Deck
                       </span>
-                      <span className="text-[10px] font-mono text-[#057A55]">v3.2 Ready</span>
+                      <span className="text-xs font-bold text-[#057A55]">v3.2 Ready</span>
                     </div>
                     <p className="text-[11px] text-[var(--color-text-secondary)]">
                       12 slides automatically branded with Cloudflare color palette and Wembley LED 3D placement.
@@ -205,7 +205,7 @@ export function CommercialWorkspaceConsole() {
           <div className="p-5 sm:p-6 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--color-border)]">
               <div>
-                <Badge variant="outline" className="bg-[#533AFD]/8 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border-[#533AFD]/20 text-[10px] font-mono mb-1">
+                <Badge variant="outline" className="bg-[#533AFD]/8 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border-[#533AFD]/20 text-xs font-semibold mb-1">
                   Consultant Advisory Command Center
                 </Badge>
                 <h3 className="text-lg font-bold text-[var(--color-text-primary)]">
@@ -240,7 +240,7 @@ export function CommercialWorkspaceConsole() {
                       </div>
                       <div className="flex sm:flex-col items-center sm:items-end justify-between">
                         <span className="font-mono font-bold text-[#057A55]">{p.value}</span>
-                        <span className="text-[10px] text-[var(--color-text-muted)] font-mono">{p.status}</span>
+                        <span className="text-xs text-[var(--color-text-secondary)] font-medium">{p.status}</span>
                       </div>
                     </div>
                   ))}
@@ -254,7 +254,7 @@ export function CommercialWorkspaceConsole() {
                     <Calendar className="w-3.5 h-3.5 text-[#533AFD]" />
                     Schedule Commercial Advisory Session
                   </span>
-                  <span className="text-[10px] text-[#533AFD] font-bold">Senior Partner</span>
+                  <span className="text-xs text-[#533AFD] font-bold">Senior Partner</span>
                 </div>
                 <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
                   Rightsholders can book 1-on-1 strategy sessions with commercial consultants to refine rate cards, resolve exclusivity conflicts, or prepare high-stakes pitches.
@@ -300,7 +300,7 @@ export function CommercialWorkspaceConsole() {
           <div className="p-5 sm:p-6 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--color-border)]">
               <div>
-                <Badge variant="outline" className="bg-[#057A55]/10 text-[#057A55] dark:bg-emerald-950/40 dark:text-emerald-300 border-[#057A55]/20 text-[10px] font-mono mb-1">
+                <Badge variant="outline" className="bg-[#057A55]/10 text-[#057A55] dark:bg-emerald-950/40 dark:text-emerald-300 border-[#057A55]/20 text-xs font-semibold mb-1">
                   Brand Partner Delivery Portal
                 </Badge>
                 <h3 className="text-lg font-bold text-[var(--color-text-primary)]">

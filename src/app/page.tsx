@@ -118,11 +118,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-16">
           {/* Section 1: Cockpit Telemetry & KPI Grid */}
           <section id="cockpit" className="scroll-mt-20">
-            <div className="mb-4">
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF]">
+            <div className="mb-4 space-y-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF]">
                 Commercial Portfolio Observability
               </span>
-              <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
                 Audited Rights Inventory & Pipeline Telemetry
               </h2>
             </div>
@@ -131,11 +131,11 @@ export default function HomePage() {
 
           {/* Section 2: Interactive AI Pipeline & Governance Engine */}
           <section id="pipeline" className="scroll-mt-20">
-            <div className="mb-4">
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF]">
+            <div className="mb-4 space-y-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF]">
                 Autonomous Commercial Sponsorship Engine
               </span>
-              <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
                 Connected Multi-Agent Context Bus & Human Approval
               </h2>
             </div>

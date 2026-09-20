@@ -106,7 +106,7 @@ export function DataTableSection() {
                 {siteConfig.table.columns.map((col) => (
                   <TableHead
                     key={col.key}
-                    className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-secondary)] font-mono py-3 px-4"
+                    className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-secondary)] py-3.5 px-4"
                   >
                     {col.label}
                   </TableHead>
@@ -123,29 +123,29 @@ export function DataTableSection() {
                   }}
                   className="border-b border-[var(--color-border)]/60 cursor-pointer hover:bg-[var(--color-panel-subtle)]/70 transition-colors"
                 >
-                  <TableCell className="py-3 px-4">
-                    <div className="font-semibold text-xs text-[var(--color-text-primary)]">
+                  <TableCell className="py-3.5 px-4">
+                    <div className="font-bold text-sm text-[var(--color-text-primary)]">
                       {row.entityName}
                     </div>
-                    <div className="text-[11px] text-[var(--color-text-muted)] font-mono">
+                    <div className="text-xs text-[var(--color-text-muted)] font-mono">
                       ID: {row.id}
                     </div>
                   </TableCell>
-                  <TableCell className="text-xs text-[var(--color-text-secondary)] py-3 px-4">
+                  <TableCell className="text-[13.5px] text-[var(--color-text-secondary)] py-3.5 px-4">
                     {row.category}
                   </TableCell>
-                  <TableCell className="py-3 px-4">
+                  <TableCell className="py-3.5 px-4">
                     {getStatusBadge(row.status)}
                   </TableCell>
-                  <TableCell className="font-mono text-xs text-[#057A55] dark:text-emerald-400 font-bold py-3 px-4">
+                  <TableCell className="text-sm text-[#057A55] dark:text-emerald-400 font-bold py-3.5 px-4">
                     {row.latency}
                   </TableCell>
-                  <TableCell className="py-3 px-4">
-                    <span className="text-xs font-mono text-[var(--color-text-secondary)]">
+                  <TableCell className="py-3.5 px-4">
+                    <span className="text-[13px] text-[var(--color-text-secondary)] font-medium">
                       {row.provider}
                     </span>
                   </TableCell>
-                  <TableCell className="py-3 px-4">
+                  <TableCell className="py-3.5 px-4">
                     <Button
                       variant="ghost"
                       size="sm"
@@ -154,10 +154,10 @@ export function DataTableSection() {
                         setSelectedRow(row);
                         setActiveTab('workspace');
                       }}
-                      className="h-7 text-xs font-mono text-[#533AFD] dark:text-[#7A68FF] hover:bg-[#533AFD]/10 p-1 px-2.5 rounded-[4px] cursor-pointer"
+                      className="h-8 text-xs font-semibold text-[#533AFD] dark:text-[#7A68FF] hover:bg-[#533AFD]/10 px-3 rounded-[4px] cursor-pointer"
                     >
                       Inspect
-                      <ChevronRight className="h-3 w-3 ml-1" />
+                      <ChevronRight className="h-3.5 w-3.5 ml-1" />
                     </Button>
                   </TableCell>
                 </TableRow>

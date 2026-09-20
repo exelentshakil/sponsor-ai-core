@@ -83,7 +83,7 @@ export function BackboneStats() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.025em] text-[var(--color-text-primary)]">
             The backbone of modern commercial sponsorship
           </h2>
-          <p className="mt-2 text-sm text-[var(--color-text-secondary)] opacity-80 leading-relaxed">
+          <p className="mt-2 text-base text-[#2E3C4E] dark:text-slate-300 leading-relaxed">
             Connected AI agents delivering institutional valuation accuracy and zero missed deliverables at scale.
           </p>
         </div>
@@ -93,10 +93,10 @@ export function BackboneStats() {
           {STATS.map((stat, idx) => (
             <div key={idx} className="flex flex-col justify-between space-y-2">
               <div>
-                <div className="text-3xl sm:text-4xl font-bold font-mono tracking-tight text-[var(--color-text-primary)]">
+                <div className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-text-primary)]">
                   {stat.value}
                 </div>
-                <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] opacity-85 mt-1.5 leading-snug">
+                <p className="text-sm sm:text-[14.5px] text-[var(--color-text-secondary)] mt-1.5 leading-normal">
                   {stat.label}
                 </p>
               </div>
@@ -117,7 +117,7 @@ export function BackboneStats() {
                         content={({ active, payload }) => {
                           if (active && payload && payload.length) {
                             return (
-                              <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-1.5 py-0.5 text-[9px] font-mono shadow-2xs text-[var(--color-text-primary)]">
+                              <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-xs font-semibold shadow-xs text-[var(--color-text-primary)]">
                                 {payload[0].value}
                               </div>
                             );

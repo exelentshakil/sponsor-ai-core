@@ -70,7 +70,7 @@ export function Header({
           <div className="flex h-7 w-7 items-center justify-center rounded-[6px] bg-gradient-to-br from-[#533AFD] via-[#432DE0] to-[#0D1738] text-white shadow-xs font-bold shrink-0 border border-white/20">
             <Bot className="h-4 w-4" />
           </div>
-          <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)] font-sans">
+          <span className="text-[15px] font-bold tracking-tight text-[var(--color-text-primary)] font-sans">
             {siteConfig.name}
           </span>
         </div>
@@ -84,15 +84,15 @@ export function Header({
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`text-xs tracking-tight transition-all whitespace-nowrap cursor-pointer relative py-1 ${
+                className={`text-[14px] tracking-tight transition-all whitespace-nowrap cursor-pointer relative py-1 ${
                   isActive
                     ? 'text-[var(--color-text-primary)] font-bold'
-                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] font-medium'
+                    : 'text-[#425466] dark:text-[#ADBDCC] hover:text-[var(--color-text-primary)] font-medium'
                 }`}
               >
                 <span>{label}</span>
                 {isActive && (
-                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2px] bg-[#533AFD] dark:bg-[#7A68FF] rounded-full" />
+                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2.5px] bg-[#533AFD] dark:bg-[#7A68FF] rounded-full" />
                 )}
               </button>
             );
@@ -107,11 +107,11 @@ export function Header({
             variant="outline"
             size="sm"
             onClick={onOpenCommandMenu}
-            className="h-8 items-center gap-1.5 px-2.5 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
+            className="h-8.5 items-center gap-1.5 px-3 text-xs sm:text-[13px] font-medium text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
             title="Search & Quick Actions (⌘K)"
           >
             <Command className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]" />
-            <span className="text-[11px] hidden sm:inline">⌘K</span>
+            <span className="text-xs hidden sm:inline font-mono">⌘K</span>
           </Button>
 
           {/* More Secondary Drawers Trigger (Dropdown) */}
@@ -120,7 +120,7 @@ export function Header({
               variant="outline"
               size="sm"
               onClick={() => setMoreMenuOpen(!moreMenuOpen)}
-              className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
+              className="h-8.5 w-8.5 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
               title="More Options (Governance Blueprint & Logs)"
             >
               <MoreHorizontal className="h-4 w-4" />
@@ -164,7 +164,7 @@ export function Header({
           <Button
             size="sm"
             onClick={onOpenChaosModal}
-            className="h-8 text-xs font-semibold bg-[#533AFD] hover:bg-[#432DE0] text-white shadow-2xs whitespace-nowrap px-3 rounded-[4px] cursor-pointer"
+            className="h-8.5 text-xs sm:text-[13px] font-semibold bg-[#533AFD] hover:bg-[#432DE0] text-white shadow-2xs whitespace-nowrap px-3.5 rounded-[4px] cursor-pointer"
           >
             <Zap className="h-3.5 w-3.5 mr-1.5 text-white" />
             <span>Chaos Test</span>
@@ -176,7 +176,7 @@ export function Header({
               variant="outline"
               size="sm"
               onClick={toggleTheme}
-              className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
+              className="h-8.5 w-8.5 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? (
@@ -198,7 +198,7 @@ export function Header({
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`text-xs transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`text-[13.5px] transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 isActive
                   ? 'text-[#533AFD] dark:text-[#7A68FF] font-bold'
                   : 'text-[var(--color-text-secondary)] font-medium'

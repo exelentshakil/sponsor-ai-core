@@ -117,7 +117,7 @@ export function MetricsGrid() {
               content={({ active, payload }) => {
                 if (active && payload && payload.length) {
                   return (
-                    <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-[10px] font-mono shadow-xs text-[var(--color-text-primary)]">
+                    <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1 text-xs font-medium shadow-xs text-[var(--color-text-primary)]">
                       <span className="font-bold text-[#533AFD] dark:text-[#7A68FF]">${payload[0].value}M</span> FMV
                     </div>
                   );
@@ -153,7 +153,7 @@ export function MetricsGrid() {
               content={({ active, payload }) => {
                 if (active && payload && payload.length) {
                   return (
-                    <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-[10px] font-mono shadow-xs text-[var(--color-text-primary)]">
+                    <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1 text-xs font-medium shadow-xs text-[var(--color-text-primary)]">
                       <span className="font-bold text-[#057A55] dark:text-emerald-400">${payload[0].value}M</span> Pipeline
                     </div>
                   );
@@ -190,7 +190,7 @@ export function MetricsGrid() {
                 if (active && payload && payload.length) {
                   const data = payload[0].payload;
                   return (
-                    <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-[10px] font-mono shadow-xs text-[var(--color-text-primary)]">
+                    <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1 text-xs font-medium shadow-xs text-[var(--color-text-primary)]">
                       {data.t}: <span className="font-bold text-amber-600 dark:text-amber-400">{data.v}%</span> SLA
                     </div>
                   );
@@ -226,7 +226,7 @@ export function MetricsGrid() {
               if (active && payload && payload.length) {
                 const data = payload[0].payload;
                 return (
-                  <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-[10px] font-mono shadow-xs text-[var(--color-text-primary)]">
+                  <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1 text-xs font-medium shadow-xs text-[var(--color-text-primary)]">
                     {data.t}: <span className="font-bold text-teal-600 dark:text-teal-400">{data.v} min</span> Turnaround
                   </div>
                 );
@@ -261,11 +261,11 @@ export function MetricsGrid() {
             >
               {/* Card Header: Category Eyebrow + Badge */}
               <div className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-secondary)] opacity-75 font-mono">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-secondary)]">
                   {metric.title}
                 </span>
                 <span
-                  className={`inline-flex items-center rounded-[4px] px-2 py-0.5 text-[10px] font-mono font-semibold border ${badgeStyle} shrink-0`}
+                  className={`inline-flex items-center rounded-[4px] px-2.5 py-0.5 text-xs font-semibold border ${badgeStyle} shrink-0`}
                 >
                   <Icon className="h-3 w-3 mr-1 shrink-0" />
                   {metric.badge}
@@ -275,10 +275,10 @@ export function MetricsGrid() {
               {/* Card Body: Primary Bold Metric & Dope Wavy Sparkline */}
               <div className="p-4 pt-1 space-y-3">
                 <div className="flex items-baseline justify-between gap-2">
-                  <span className="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-[var(--color-text-primary)]">
+                  <span className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
                     {metric.value}
                   </span>
-                  <span className="inline-flex items-center text-xs font-semibold text-[#057A55] dark:text-emerald-400 font-mono">
+                  <span className="inline-flex items-center text-xs sm:text-[13px] font-bold text-[#057A55] dark:text-emerald-400">
                     <ArrowUpRight className="h-3 w-3 mr-0.5 shrink-0" />
                     {metric.change}
                   </span>
@@ -290,9 +290,9 @@ export function MetricsGrid() {
                 </div>
 
                 {/* Subtext Footer with separator and live pulse indicator */}
-                <div className="text-[11px] text-[var(--color-text-secondary)] opacity-75 font-mono border-t border-[var(--color-border)]/60 pt-2 flex items-center justify-between">
+                <div className="text-xs text-[var(--color-text-secondary)] font-medium border-t border-[var(--color-border)]/70 pt-2 flex items-center justify-between">
                   <span className="truncate pr-2">{metric.subtext}</span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#00D924] animate-pulse shrink-0" title="Active telemetry node" />
+                  <span className="h-2 w-2 rounded-full bg-[#00D924] animate-pulse shrink-0" title="Active telemetry node" />
                 </div>
               </div>
             </div>
@@ -305,19 +305,19 @@ export function MetricsGrid() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[var(--color-border)]">
           <div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#00D924] animate-pulse" />
-              <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)]">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#00D924] animate-pulse shrink-0" />
+              <span className="text-sm sm:text-[15px] font-bold tracking-tight text-[var(--color-text-primary)]">
                 Multi-Agent Context Bus • Sub-50ms Handoff Telemetry
               </span>
-              <span className="rounded-[4px] bg-[#533AFD]/8 text-[#533AFD] border border-[#533AFD]/20 dark:bg-[#7A68FF]/15 dark:text-[#7A68FF] dark:border-[#7A68FF]/30 px-2 py-0.5 text-[10px] font-mono font-semibold">
+              <span className="rounded-[4px] bg-[#533AFD]/8 text-[#533AFD] border border-[#533AFD]/20 dark:bg-[#7A68FF]/15 dark:text-[#7A68FF] dark:border-[#7A68FF]/30 px-2.5 py-0.5 text-xs font-semibold">
                 Live Stream
               </span>
             </div>
-            <p className="text-xs text-[var(--color-text-secondary)] opacity-80 mt-1">
+            <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] mt-1">
               Real-time context serialization &amp; throughput across Asset Audit → Brand Match → Deck Synth → Obligation Guard
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[var(--color-text-secondary)]">
+          <div className="flex flex-wrap items-center gap-4 text-xs sm:text-[13px] text-[var(--color-text-secondary)]">
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-[#533AFD]" />
               Handoffs: <strong className="text-[var(--color-text-primary)]">6,450 / min</strong>

@@ -204,14 +204,14 @@ export function HeroWorkflowEngine() {
               { num: '5', name: 'Human Approval', status: approved ? 'approved' : 'pending' },
             ].map((stage, idx) => (
               <div key={idx} className="flex items-center gap-1.5">
-                <span className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                <span className={`h-5 w-5 rounded-full flex items-center justify-center text-xs font-bold ${
                   stage.status === 'done' || stage.status === 'approved'
                     ? 'bg-[#00D924] text-black font-extrabold'
                     : 'bg-amber-400 text-black font-extrabold animate-pulse'
                 }`}>
                   {stage.status === 'done' || stage.status === 'approved' ? '✓' : stage.num}
                 </span>
-                <span className={`text-[11px] ${stage.status === 'approved' ? 'text-[#057A55] font-bold' : 'text-[var(--color-text-primary)]'}`}>
+                <span className={`text-xs sm:text-[13px] ${stage.status === 'approved' ? 'text-[#057A55] font-bold' : 'text-[var(--color-text-primary)] font-medium'}`}>
                   {stage.name}
                 </span>
                 {idx < 4 && <ChevronRight className="h-3 w-3 text-[var(--color-text-muted)] mx-0.5" />}
@@ -226,10 +226,10 @@ export function HeroWorkflowEngine() {
             {/* Top Status Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--color-border)]">
               <div>
-                <div className="text-[10px] font-mono uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF] font-bold">
+                <div className="text-xs font-bold uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF]">
                   Active Commercial Proposal
                 </div>
-                <h3 className="text-lg font-bold text-[var(--color-text-primary)]">
+                <h3 className="text-lg sm:text-xl font-bold text-[var(--color-text-primary)]">
                   {category}
                 </h3>
               </div>
@@ -295,7 +295,7 @@ export function HeroWorkflowEngine() {
 
                 {/* Strategic Commercial Reasoning */}
                 <div className="p-3 rounded-[6px] bg-[var(--color-panel-subtle)] border border-[var(--color-border)] space-y-1">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-text-muted)] font-bold">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-secondary)]">
                     AI Commercial Strategy
                   </div>
                   <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
@@ -322,10 +322,10 @@ export function HeroWorkflowEngine() {
                     {activeSlide === 1 && (
                       <>
                         <div>
-                          <div className="text-[9px] font-mono text-[#00D4FF] uppercase tracking-wider">Title Sponsorship Package</div>
+                          <div className="text-xs font-semibold text-[#00D4FF] uppercase tracking-wider">Title Sponsorship Package</div>
                           <div className="text-sm font-bold text-white mt-1">Wembley Arena Tier-1 Court-side LED &amp; Executive Suites</div>
                         </div>
-                        <div className="flex items-center justify-between text-[10px] font-mono text-slate-300">
+                        <div className="flex items-center justify-between text-xs text-slate-200">
                           <span>Target: Global Cloud Platform</span>
                           <span className="text-emerald-400 font-bold">$2.48M Valuation</span>
                         </div>
@@ -334,10 +334,10 @@ export function HeroWorkflowEngine() {
                     {activeSlide === 2 && (
                       <>
                         <div>
-                          <div className="text-[9px] font-mono text-[#00D4FF] uppercase tracking-wider">Audience &amp; Demographics</div>
+                          <div className="text-xs font-semibold text-[#00D4FF] uppercase tracking-wider">Audience &amp; Demographics</div>
                           <div className="text-sm font-bold text-white mt-1">2.4M Annual Attendees • 68% C-Suite &amp; Tech Decision Makers</div>
                         </div>
-                        <div className="flex items-center justify-between text-[10px] font-mono text-slate-300">
+                        <div className="flex items-center justify-between text-xs text-slate-200">
                           <span>Broadcast Reach: 18.2M</span>
                           <span className="text-emerald-400 font-bold">38m Screentime</span>
                         </div>
@@ -346,10 +346,10 @@ export function HeroWorkflowEngine() {
                     {activeSlide === 3 && (
                       <>
                         <div>
-                          <div className="text-[9px] font-mono text-[#00D4FF] uppercase tracking-wider">Deliverable Activation Matrix</div>
+                          <div className="text-xs font-semibold text-[#00D4FF] uppercase tracking-wider">Deliverable Activation Matrix</div>
                           <div className="text-sm font-bold text-white mt-1">360m LED Ribbon + 400 VIP Passes + 4 Co-Branded Activations</div>
                         </div>
-                        <div className="flex items-center justify-between text-[10px] font-mono text-slate-300">
+                        <div className="flex items-center justify-between text-xs text-slate-200">
                           <span>Contract SLA Guard Active</span>
                           <span className="text-emerald-400 font-bold">0 Breached Deliverables</span>
                         </div>
@@ -376,7 +376,7 @@ export function HeroWorkflowEngine() {
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-2 text-[10px] font-mono text-slate-300">
+                    <div className="flex items-center gap-2 text-xs text-slate-200">
                       <span className="flex items-center gap-1 text-[#00D4FF]">
                         <Eye className="w-3 h-3" /> Preview Ready
                       </span>
