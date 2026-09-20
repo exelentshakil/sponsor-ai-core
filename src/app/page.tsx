@@ -8,6 +8,7 @@ import { BackboneStats } from '@/components/BackboneStats';
 import { StripeFeatureGrid } from '@/components/StripeFeatureGrid';
 import { MetricsGrid } from '@/components/MetricsGrid';
 import { HeroWorkflowEngine } from '@/components/HeroWorkflowEngine';
+import { CommercialWorkspaceConsole } from '@/components/CommercialWorkspaceConsole';
 import { EnterpriseMediaShowcase } from '@/components/EnterpriseMediaShowcase';
 import { DataTableSection } from '@/components/DataTableSection';
 import { ChaosSimulatorModal } from '@/components/ChaosSimulatorModal';
@@ -66,7 +67,7 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    const sectionIds = ['cockpit', 'pipeline', 'records'];
+    const sectionIds = ['cockpit', 'pipeline', 'workspaces', 'records'];
     const observer = new IntersectionObserver(
       (entries) => {
         if (isNavigatingRef.current) return;
@@ -119,10 +120,10 @@ export default function HomePage() {
           <section id="cockpit" className="scroll-mt-20">
             <div className="mb-4">
               <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF]">
-                Live System Observability
+                Commercial Portfolio Observability
               </span>
               <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
-                Real-Time Performance & Pipeline Health
+                Audited Rights Inventory & Pipeline Telemetry
               </h2>
             </div>
             <MetricsGrid />
@@ -132,14 +133,17 @@ export default function HomePage() {
           <section id="pipeline" className="scroll-mt-20">
             <div className="mb-4">
               <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#533AFD] dark:text-[#7A68FF]">
-                Production AI Workflow
+                Autonomous Commercial Sponsorship Engine
               </span>
               <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
-                Dual-Provider Inference & Security Guardrails
+                Connected Multi-Agent Context Bus & Human Approval
               </h2>
             </div>
             <HeroWorkflowEngine />
           </section>
+
+          {/* Section 2b: Multi-Tenant Workspaces & Portals Console */}
+          <CommercialWorkspaceConsole />
 
           {/* Section 3: Enterprise Media & Case Studies (Pexels API Video & Photography Showcase) */}
           <EnterpriseMediaShowcase />

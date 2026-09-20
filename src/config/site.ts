@@ -71,6 +71,7 @@ export const siteConfig: SiteConfig = {
   primaryNav: [
     { id: 'cockpit', label: 'Operations Cockpit' },
     { id: 'pipeline', label: 'Agent Lifecycle Engine' },
+    { id: 'workspaces', label: 'Workspaces & Portals' },
     { id: 'records', label: 'Properties & Contracts' },
   ],
   metrics: [
