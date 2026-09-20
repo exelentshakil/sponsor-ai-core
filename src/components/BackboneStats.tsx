@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
+import { AreaChart, Area, ResponsiveContainer, YAxis, Tooltip } from 'recharts';
 
 interface BackboneStat {
   value: string;
   label: string;
   color: string;
-  curveType: 'monotone' | 'stepAfter' | 'linear';
+  domain?: [number, number];
   sparkline: { t: string; v: number }[];
 }
 
@@ -16,52 +16,54 @@ const STATS: BackboneStat[] = [
     value: '$42.8M',
     label: 'in audited commercial sponsorship inventory under management',
     color: '#533AFD',
-    curveType: 'monotone',
     sparkline: [
-      { t: '1', v: 24 },
-      { t: '2', v: 29 },
-      { t: '3', v: 34 },
-      { t: '4', v: 39 },
-      { t: '5', v: 42.8 },
+      { t: 'Q1', v: 22.4 },
+      { t: 'Q2', v: 28.5 },
+      { t: 'Q3', v: 26.8 },
+      { t: 'Q4', v: 34.2 },
+      { t: 'Q5', v: 38.6 },
+      { t: 'Q6', v: 42.8 },
     ],
   },
   {
     value: '5 Agents',
     label: 'connected across the lifecycle with human-in-the-loop approvals',
     color: '#057A55',
-    curveType: 'stepAfter',
     sparkline: [
-      { t: '1', v: 1 },
-      { t: '2', v: 2 },
-      { t: '3', v: 3 },
-      { t: '4', v: 4 },
-      { t: '5', v: 5 },
+      { t: 'Stage 1', v: 1.0 },
+      { t: 'Stage 2', v: 2.4 },
+      { t: 'Stage 3', v: 2.2 },
+      { t: 'Stage 4', v: 3.8 },
+      { t: 'Stage 5', v: 4.4 },
+      { t: 'Stage 6', v: 5.0 },
     ],
   },
   {
     value: '99.4%',
     label: 'contract obligation delivery rate across stadium and broadcast events',
-    color: '#7A68FF',
-    curveType: 'linear',
+    color: '#D97706',
+    domain: [97.5, 100],
     sparkline: [
-      { t: '1', v: 98.2 },
-      { t: '2', v: 98.8 },
-      { t: '3', v: 99.1 },
-      { t: '4', v: 99.3 },
-      { t: '5', v: 99.4 },
+      { t: 'W1', v: 98.1 },
+      { t: 'W2', v: 99.2 },
+      { t: 'W3', v: 98.7 },
+      { t: 'W4', v: 99.6 },
+      { t: 'W5', v: 99.1 },
+      { t: 'W6', v: 99.4 },
     ],
   },
   {
     value: '4.8 min',
     label: 'average turnaround from asset intake to client-ready pitch deck',
     color: '#0d9488',
-    curveType: 'monotone',
+    domain: [0, 52],
     sparkline: [
-      { t: '1', v: 48 },
-      { t: '2', v: 24 },
-      { t: '3', v: 14 },
-      { t: '4', v: 8 },
-      { t: '5', v: 4.8 },
+      { t: 'Run 1', v: 48.0 },
+      { t: 'Run 2', v: 32.5 },
+      { t: 'Run 3', v: 22.1 },
+      { t: 'Run 4', v: 14.8 },
+      { t: 'Run 5', v: 8.2 },
+      { t: 'Run 6', v: 4.8 },
     ],
   },
 ];
@@ -86,7 +88,7 @@ export function BackboneStats() {
           </p>
         </div>
 
-        {/* 4-Column Stat Strip with Varied Micro Sparklines */}
+        {/* 4-Column Stat Strip with Dope Wavy Sparklines */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 pt-6 border-t border-[var(--color-border)]">
           {STATS.map((stat, idx) => (
             <div key={idx} className="flex flex-col justify-between space-y-2">
@@ -99,17 +101,18 @@ export function BackboneStats() {
                 </p>
               </div>
 
-              {/* Distinct Micro Sparkline */}
-              <div className="h-8 w-full pt-2">
+              {/* Distinct Dope Wavy Sparkline */}
+              <div className="h-10 w-full pt-2">
                 {mounted && (
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={stat.sparkline} margin={{ top: 2, right: 0, left: 0, bottom: 0 }}>
                       <defs>
                         <linearGradient id={`bbGrad_${idx}`} x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor={stat.color} stopOpacity={0.25} />
+                          <stop offset="0%" stopColor={stat.color} stopOpacity={0.35} />
                           <stop offset="100%" stopColor={stat.color} stopOpacity={0.0} />
                         </linearGradient>
                       </defs>
+                      {stat.domain && <YAxis hide domain={stat.domain} />}
                       <Tooltip
                         content={({ active, payload }) => {
                           if (active && payload && payload.length) {
@@ -123,10 +126,10 @@ export function BackboneStats() {
                         }}
                       />
                       <Area
-                        type={stat.curveType}
+                        type="monotone"
                         dataKey="v"
                         stroke={stat.color}
-                        strokeWidth={1.5}
+                        strokeWidth={2}
                         fill={`url(#bbGrad_${idx})`}
                       />
                     </AreaChart>
