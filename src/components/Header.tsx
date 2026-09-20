@@ -3,16 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import {
-  Activity,
-  Bot,
-  Globe2,
   Command,
   Sun,
   Moon,
   Zap,
+  Bot,
+  MoreHorizontal,
   ShieldCheck,
   Terminal,
-  Layers,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/button';
@@ -36,6 +34,7 @@ export function Header({
 }: HeaderProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [moreMenuOpen, setMoreMenuOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -48,110 +47,126 @@ export function Header({
     setTheme(isDark ? 'light' : 'dark');
   };
 
-  const getNavIcon = (id: string, className: string = 'h-3.5 w-3.5') => {
-    switch (id) {
-      case 'cockpit':
-        return <Activity className={`${className} text-[#533AFD] dark:text-[#7A68FF]`} />;
-      case 'pipeline':
-        return <Bot className={`${className} text-teal-600 dark:text-teal-400`} />;
-      case 'workspaces':
-        return <Layers className={`${className} text-blue-600 dark:text-blue-400`} />;
-      case 'records':
-        return <Globe2 className={`${className} text-indigo-600 dark:text-indigo-400`} />;
-      default:
-        return <Activity className={`${className} text-[#533AFD] dark:text-[#7A68FF]`} />;
-    }
+  // Concise single-word/two-word navigation labels that never break
+  const navLabels: Record<string, string> = {
+    cockpit: 'Cockpit',
+    pipeline: 'Lifecycle Engine',
+    workspaces: 'Workspaces',
+    records: 'Contracts',
   };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-surface)]/95 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8 gap-2">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         
-        {/* Left: Brand Identity (Compact & Anti-Wrapping) */}
+        {/* Left: Clean Brand Mark (Never overflows: Logo + Name Only) */}
         <div
           onClick={() => onNavigate('hero')}
           role="button"
           tabIndex={0}
           onKeyDown={(e) => e.key === 'Enter' && onNavigate('hero')}
-          className="flex items-center gap-2 min-w-0 shrink-0 cursor-pointer select-none"
+          className="flex items-center gap-2.5 shrink-0 cursor-pointer select-none"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-gradient-to-br from-[#533AFD] via-[#432DE0] to-[#0D1738] text-white shadow-xs font-bold shrink-0 border border-white/20">
+          <div className="flex h-7 w-7 items-center justify-center rounded-[6px] bg-gradient-to-br from-[#533AFD] via-[#432DE0] to-[#0D1738] text-white shadow-xs font-bold shrink-0 border border-white/20">
             <Bot className="h-4 w-4" />
           </div>
-          <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)] shrink-0">
+          <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)] font-sans">
             {siteConfig.name}
-          </span>
-          <span className="hidden 2xl:inline-flex text-[10px] font-semibold px-2 py-0.5 rounded-[4px] bg-[#533AFD]/10 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border border-[#533AFD]/20 dark:border-[#7A68FF]/30 font-mono truncate max-w-[200px]">
-            {siteConfig.badge}
           </span>
         </div>
 
-        {/* Center: Clean Segmented Pill Navigation */}
-        <nav className="hidden xl:flex items-center gap-1 rounded-[6px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-1 shadow-2xs shrink-0">
+        {/* Center: Stripe/Linear Authentic Text Navigation (High-Density, Zero Bulk) */}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {siteConfig.primaryNav.map((item) => {
             const isActive = activeSection === item.id;
+            const label = navLabels[item.id] || item.label;
             return (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-[4px] transition-all whitespace-nowrap cursor-pointer ${
+                className={`text-xs tracking-tight transition-all whitespace-nowrap cursor-pointer relative py-1 ${
                   isActive
-                    ? 'bg-[var(--color-surface)] text-[var(--color-text-primary)] font-semibold shadow-2xs border border-[var(--color-border)]/60'
-                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]/60'
+                    ? 'text-[var(--color-text-primary)] font-bold'
+                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] font-medium'
                 }`}
               >
-                {getNavIcon(item.id, isActive ? 'h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]' : 'h-3.5 w-3.5')}
-                <span>{item.label}</span>
+                <span>{label}</span>
+                {isActive && (
+                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2px] bg-[#533AFD] dark:bg-[#7A68FF] rounded-full" />
+                )}
               </button>
             );
           })}
         </nav>
 
-        {/* Right: Streamlined Action Suite (No Overflow) */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          {/* Command Palette Trigger */}
+        {/* Right: Essential High-Signal Action Suite (Fits Every Display Perfectly) */}
+        <div className="flex items-center gap-2 shrink-0">
+          
+          {/* Command Palette (⌘K) */}
           <Button
             variant="outline"
             size="sm"
             onClick={onOpenCommandMenu}
-            className="hidden sm:flex h-8 items-center gap-1.5 px-2 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
-            title="Command Menu (⌘K)"
+            className="h-8 items-center gap-1.5 px-2.5 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
+            title="Search & Quick Actions (⌘K)"
           >
             <Command className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]" />
-            <span className="text-[11px]">⌘K</span>
+            <span className="text-[11px] hidden sm:inline">⌘K</span>
           </Button>
 
-          {/* Governance Drawer Trigger (Compact Icon Pill) */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onOpenGovernanceDrawer}
-            className="hidden md:flex h-8 items-center gap-1.5 px-2 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
-            title="AI Governance & NIST TRiSM Blueprint"
-          >
-            <ShieldCheck className="h-3.5 w-3.5 text-[#057A55] dark:text-emerald-400" />
-            <span className="hidden lg:inline text-[11px]">Blueprint</span>
-          </Button>
+          {/* More Secondary Drawers Trigger (Dropdown) */}
+          <div className="relative">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setMoreMenuOpen(!moreMenuOpen)}
+              className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
+              title="More Options (Governance Blueprint & Logs)"
+            >
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
 
-          {/* Logs Drawer Trigger (Compact Icon Pill) */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onOpenLogsDrawer}
-            className="hidden md:flex h-8 items-center gap-1 px-2 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
-            title="Execution Logs"
-          >
-            <Terminal className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]" />
-            <span className="hidden lg:inline text-[11px]">Logs</span>
-          </Button>
+            {moreMenuOpen && (
+              <>
+                <div
+                  className="fixed inset-0 z-50"
+                  onClick={() => setMoreMenuOpen(false)}
+                />
+                <div className="absolute right-0 top-10 z-50 w-52 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-1.5 shadow-xl space-y-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMoreMenuOpen(false);
+                      onOpenGovernanceDrawer();
+                    }}
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-[4px] text-xs font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] text-left cursor-pointer"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#057A55]" />
+                    <span>NIST AI Governance</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMoreMenuOpen(false);
+                      onOpenLogsDrawer();
+                    }}
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-[4px] text-xs font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] text-left cursor-pointer"
+                  >
+                    <Terminal className="w-3.5 h-3.5 text-[#533AFD]" />
+                    <span>Real-time Execution Logs</span>
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
 
-          {/* Chaos Test Button (Stripe Blurple) */}
+          {/* Primary Action Button: Chaos Test */}
           <Button
             size="sm"
             onClick={onOpenChaosModal}
-            className="h-8 text-xs font-semibold bg-[#533AFD] hover:bg-[#432DE0] text-white shadow-2xs whitespace-nowrap shrink-0 px-2.5 rounded-[4px] cursor-pointer"
+            className="h-8 text-xs font-semibold bg-[#533AFD] hover:bg-[#432DE0] text-white shadow-2xs whitespace-nowrap px-3 rounded-[4px] cursor-pointer"
           >
-            <Zap className="h-3.5 w-3.5 mr-1 text-white shrink-0" />
+            <Zap className="h-3.5 w-3.5 mr-1.5 text-white" />
             <span>Chaos Test</span>
           </Button>
 
@@ -161,7 +176,7 @@ export function Header({
               variant="outline"
               size="sm"
               onClick={toggleTheme}
-              className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px] cursor-pointer"
+              className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs rounded-[4px] cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? (
@@ -174,22 +189,22 @@ export function Header({
         </div>
       </div>
 
-      {/* Sub-header Navigation for Tablets & Mobile (Smooth Horizontal Scroll) */}
-      <div className="xl:hidden border-t border-[var(--color-border)] bg-[var(--color-panel-subtle)] py-1.5 px-3 overflow-x-auto no-scrollbar flex items-center gap-1.5 flex-nowrap">
+      {/* Mobile Horizontal Sub-Navigation (<768px) */}
+      <div className="md:hidden border-t border-[var(--color-border)] bg-[var(--color-panel-subtle)] py-2 px-4 overflow-x-auto no-scrollbar flex items-center gap-4 flex-nowrap">
         {siteConfig.primaryNav.map((item) => {
           const isActive = activeSection === item.id;
+          const label = navLabels[item.id] || item.label;
           return (
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-[4px] transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`text-xs transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 isActive
-                  ? 'bg-[#533AFD] text-white font-semibold shadow-2xs'
-                  : 'bg-[var(--color-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:bg-[var(--color-surface)]/80'
+                  ? 'text-[#533AFD] dark:text-[#7A68FF] font-bold'
+                  : 'text-[var(--color-text-secondary)] font-medium'
               }`}
             >
-              {getNavIcon(item.id, isActive ? 'h-3 w-3 text-white' : 'h-3 w-3')}
-              <span>{item.label}</span>
+              {label}
             </button>
           );
         })}
