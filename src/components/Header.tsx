@@ -12,6 +12,7 @@ import {
   Zap,
   ShieldCheck,
   Terminal,
+  Layers,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/button';
@@ -53,6 +54,8 @@ export function Header({
         return <Activity className={`${className} text-[#533AFD] dark:text-[#7A68FF]`} />;
       case 'pipeline':
         return <Bot className={`${className} text-teal-600 dark:text-teal-400`} />;
+      case 'workspaces':
+        return <Layers className={`${className} text-blue-600 dark:text-blue-400`} />;
       case 'records':
         return <Globe2 className={`${className} text-indigo-600 dark:text-indigo-400`} />;
       default:
@@ -62,37 +65,36 @@ export function Header({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-surface)]/95 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 gap-2 sm:gap-4">
-        {/* Left: Brand Identity & Version Badge */}
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8 gap-2">
+        
+        {/* Left: Brand Identity (Compact & Anti-Wrapping) */}
         <div
-          onClick={() => onNavigate("hero")}
+          onClick={() => onNavigate('hero')}
           role="button"
           tabIndex={0}
-          onKeyDown={(e) => e.key === "Enter" && onNavigate("hero")}
-          className="flex items-center gap-2.5 min-w-0 shrink-0 cursor-pointer select-none"
+          onKeyDown={(e) => e.key === 'Enter' && onNavigate('hero')}
+          className="flex items-center gap-2 min-w-0 shrink-0 cursor-pointer select-none"
         >
           <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-gradient-to-br from-[#533AFD] via-[#432DE0] to-[#0D1738] text-white shadow-xs font-bold shrink-0 border border-white/20">
             <Bot className="h-4 w-4" />
           </div>
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)]">
-              {siteConfig.name}
-            </span>
-            <span className="hidden sm:inline-flex text-[10px] font-semibold px-2 py-0.5 rounded-[4px] bg-[#533AFD]/10 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border border-[#533AFD]/20 dark:border-[#7A68FF]/30 font-mono">
-              {siteConfig.badge}
-            </span>
-          </div>
+          <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)] shrink-0">
+            {siteConfig.name}
+          </span>
+          <span className="hidden 2xl:inline-flex text-[10px] font-semibold px-2 py-0.5 rounded-[4px] bg-[#533AFD]/10 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border border-[#533AFD]/20 dark:border-[#7A68FF]/30 font-mono truncate max-w-[200px]">
+            {siteConfig.badge}
+          </span>
         </div>
 
-        {/* Center: Desktop Clean Segmented Pill Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 rounded-[6px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-1 shadow-2xs">
+        {/* Center: Clean Segmented Pill Navigation */}
+        <nav className="hidden xl:flex items-center gap-1 rounded-[6px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-1 shadow-2xs shrink-0">
           {siteConfig.primaryNav.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-[4px] transition-all whitespace-nowrap ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-[4px] transition-all whitespace-nowrap cursor-pointer ${
                   isActive
                     ? 'bg-[var(--color-surface)] text-[var(--color-text-primary)] font-semibold shadow-2xs border border-[var(--color-border)]/60'
                     : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]/60'
@@ -105,49 +107,52 @@ export function Header({
           })}
         </nav>
 
-        {/* Right: Actions, Command Palette, Chaos Test & Theme Toggle */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        {/* Right: Streamlined Action Suite (No Overflow) */}
+        <div className="flex items-center gap-1.5 shrink-0">
           {/* Command Palette Trigger */}
           <Button
             variant="outline"
             size="sm"
             onClick={onOpenCommandMenu}
-            className="hidden md:flex h-8 items-center gap-1.5 px-2.5 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
+            className="hidden sm:flex h-8 items-center gap-1.5 px-2 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
+            title="Command Menu (⌘K)"
           >
             <Command className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]" />
-            <span>⌘K</span>
+            <span className="text-[11px]">⌘K</span>
           </Button>
 
-          {/* Governance Drawer Trigger */}
+          {/* Governance Drawer Trigger (Compact Icon Pill) */}
           <Button
             variant="outline"
             size="sm"
             onClick={onOpenGovernanceDrawer}
-            className="hidden xl:flex h-8 items-center gap-1.5 px-2.5 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
+            className="hidden md:flex h-8 items-center gap-1.5 px-2 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
+            title="AI Governance & NIST TRiSM Blueprint"
           >
-            <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span className="whitespace-nowrap">Stealth Blueprint</span>
+            <ShieldCheck className="h-3.5 w-3.5 text-[#057A55] dark:text-emerald-400" />
+            <span className="hidden lg:inline text-[11px]">Blueprint</span>
           </Button>
 
-          {/* Logs Drawer Trigger */}
+          {/* Logs Drawer Trigger (Compact Icon Pill) */}
           <Button
             variant="outline"
             size="sm"
             onClick={onOpenLogsDrawer}
-            className="hidden sm:flex h-8 items-center gap-1 px-2.5 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
+            className="hidden md:flex h-8 items-center gap-1 px-2 text-xs font-mono text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-surface)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
+            title="Execution Logs"
           >
             <Terminal className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]" />
-            <span className="whitespace-nowrap">Logs</span>
+            <span className="hidden lg:inline text-[11px]">Logs</span>
           </Button>
 
-          {/* Chaos Test Button (Stripe Primary Style) */}
+          {/* Chaos Test Button (Stripe Blurple) */}
           <Button
             size="sm"
             onClick={onOpenChaosModal}
-            className="h-8 text-xs font-semibold bg-[#533AFD] hover:bg-[#432DE0] text-white shadow-2xs whitespace-nowrap shrink-0 px-3 rounded-[4px]"
+            className="h-8 text-xs font-semibold bg-[#533AFD] hover:bg-[#432DE0] text-white shadow-2xs whitespace-nowrap shrink-0 px-2.5 rounded-[4px] cursor-pointer"
           >
             <Zap className="h-3.5 w-3.5 mr-1 text-white shrink-0" />
-            <span className="whitespace-nowrap">Chaos Test</span>
+            <span>Chaos Test</span>
           </Button>
 
           {/* Theme Toggle Button */}
@@ -156,7 +161,7 @@ export function Header({
               variant="outline"
               size="sm"
               onClick={toggleTheme}
-              className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
+              className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px] cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? (
@@ -169,15 +174,15 @@ export function Header({
         </div>
       </div>
 
-      {/* Mobile Horizontal Scrollable Pill Navigation with DISTINCT Icons & Stripe 4px Radii */}
-      <div className="lg:hidden border-t border-[var(--color-border)] bg-[var(--color-panel-subtle)] py-1.5 px-3 overflow-x-auto no-scrollbar flex items-center gap-1.5 flex-nowrap">
+      {/* Sub-header Navigation for Tablets & Mobile (Smooth Horizontal Scroll) */}
+      <div className="xl:hidden border-t border-[var(--color-border)] bg-[var(--color-panel-subtle)] py-1.5 px-3 overflow-x-auto no-scrollbar flex items-center gap-1.5 flex-nowrap">
         {siteConfig.primaryNav.map((item) => {
           const isActive = activeSection === item.id;
           return (
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-[4px] transition-all whitespace-nowrap shrink-0 ${
+              className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-[4px] transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 isActive
                   ? 'bg-[#533AFD] text-white font-semibold shadow-2xs'
                   : 'bg-[var(--color-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:bg-[var(--color-surface)]/80'

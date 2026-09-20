@@ -118,15 +118,15 @@ export function StripeHero({
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="w-full max-w-md rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/85 backdrop-blur-xl p-5 sm:p-6 shadow-xl space-y-4 relative">
               {/* Card Aura Header */}
-              <div className="flex items-center justify-between pb-3 border-b border-[var(--color-border)]/70">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#00D924] animate-pulse" />
-                  <span className="text-xs font-mono font-bold text-[var(--color-text-primary)]">
-                    Edge Engine • Multi-Agent Context Bus
+              <div className="flex items-center justify-between pb-3 border-b border-[var(--color-border)]/70 gap-2">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <span className="h-2 w-2 rounded-full bg-[#00D924] animate-pulse shrink-0" />
+                  <span className="text-xs font-mono font-bold text-[var(--color-text-primary)] truncate">
+                    Multi-Agent Context Bus
                   </span>
                 </div>
-                <span className="rounded-[4px] bg-[#533AFD]/10 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] px-2 py-0.5 text-[10px] font-mono font-semibold border border-[#533AFD]/20">
-                  Sub-50ms Handoff
+                <span className="rounded-[4px] bg-[#533AFD]/10 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] px-2 py-0.5 text-[10px] font-mono font-semibold border border-[#533AFD]/20 shrink-0 whitespace-nowrap">
+                  Sub-50ms Edge
                 </span>
               </div>
 
